@@ -1,0 +1,1 @@
+"0","aggregate(cbind(Wind, Ozone) ~ Month, data=airquality, max)"

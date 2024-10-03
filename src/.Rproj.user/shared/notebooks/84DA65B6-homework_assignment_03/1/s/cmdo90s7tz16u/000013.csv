@@ -1,0 +1,8 @@
+"0","die20 <- 1:20"
+"0","rolls <- sample(die20, 10000, replace = TRUE)"
+"0",""
+"0","paste0(""The number of rolls that are equal to 10 or less is: "", sum(rolls <= 10))"
+"1","[1]"
+"1"," ""The number of rolls that are equal to 10 or less is: 4986"""
+"1","
+"

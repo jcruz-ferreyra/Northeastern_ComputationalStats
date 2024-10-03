@@ -1,0 +1,175 @@
+---
+title: "Homework Assignment 04"
+author: "Juan Cruz Ferreyra"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    df_print: kable
+---
+
+```{r, echo=FALSE}
+library(knitr)
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
+set.seed(42)
+```
+
+&nbsp;
+
+&nbsp;
+
+## Section 1
+
+**a. You get back your exam from problem 3.d of Homework 3, and you got a 45. What is your z score?**
+
+The grades in the exam are distributed $N \sim (70,10)$. The Z-score for 45 is calculated the following way:
+
+$$z = \frac{x - \mu}{\sigma}$$
+
+$$z = \frac{45 - 70}{10} = -2.5$$
+
+**b. What percentile are you?**
+
+We can verify our result in the previous excercise by comparing the percentile obtained in the standard normal distribution, with the percentile corresponding to the original value in a normal distribution with the given parameters.
+
+```{r}
+paste0(
+  "The percentile for -2.5 value in the standard normal is: ",
+  round(pnorm(-2.5, 0, 1), 4)
+  )
+```
+
+```{r}
+paste0(
+  "The percentile for 45 value in the normal with original parameters is: ",
+  round(pnorm(45, 70, 10), 4)
+  )
+```
+
+**c. What is the total chance of getting something at least that far from the mean, in either direction? (Ie, the chance of getting 45 or below or equally far or farther above the mean.)**
+
+Since the normal distribution is symmetrical, the chance of getting 45 or a more extreme value is two times the percentile calculated in the previous excercise.
+
+```{r}
+paste0(
+  "The chance of getting a 45, or a value farther from the mean is: ",
+  round(pnorm(45, 70, 10) * 2, 4)
+  )
+```
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 2
+
+**a. Write a script that generates a population of at least 10,000 numbers and samples at random 9 of them.**
+
+```{r}
+popu <- sample.int(100, size = 10000, replace = TRUE)
+
+popu_sample <- sample(popu, 9, replace = FALSE)
+popu_sample
+```
+
+**b. Calculate by hand the sample mean. Please show your work using proper mathematical notation using latex.**
+
+The sample mean is calculated the following way:
+
+$$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$$
+
+Where $x_i$ corresponds to the $i$th element in our sample.
+
+$$\bar{x} = \frac{63 + 26 + 58 + 64 + 4 + 75 + 98 + 86 + 51}{9} = \frac{525}{9} = 58.\widehat{3}$$
+
+**c. Calculate by hand the sample standard deviation.**
+
+The sample standard deviation is calculated the following way:
+
+$$s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n}(x_i - \bar{x})^2}$$
+
+Where $x_i$ corresponds to the $i$th element in our sample.
+
+$$s = \sqrt{\frac{1}{9-1} ((63 - 58.\widehat{3})^2 + (26 - 58.\widehat{3})^2 + (58 - 58.\widehat{3})^2 + (64 - 58.\widehat{3})^2 + (4 - 58.\widehat{3})^2 + (75 - 58.\widehat{3})^2 + (98 - 58.\widehat{3})^2 + (86 - 58.\widehat{3})^2 + (51 - 58.\widehat{3})^2)}$$
+
+$$s = \sqrt{\frac{21.78 + 1045.44 + 0.11 + 32.11 + 2952.11 + 277.77 + 1573.44 + 765.44 + 53.77}{8}} = \sqrt{\frac{6722}{8}}$$
+
+$$s = \sqrt{\frac{6722}{8}} = 28.99$$
+
+```{r}
+# Auxiliar code
+print(paste0("(x_i - x_bar)^2 results:"))
+result <- 0
+for (x_i in popu_sample) {
+  partial_result <- (x_i - (175/3))^2
+  print(round(partial_result, 2))
+  
+  result <- result + partial_result
+}
+
+print(paste0("Summation result: ", result))
+
+print(paste0("Sample standard deviation: ", round(sqrt(result / 8), 2)))
+```
+
+**d. Calculate by hand the standard error.**
+
+The standard error, that is the measure of the spread of $\bar{x}$s around the truth $\mu$, is calculated the following way:
+
+$$se = \frac{s}{\sqrt{n}} = \frac{28.99}{\sqrt{9}} = \frac{28.99}{3} = 9.66$$
+
+**e. Calculate by hand the 95% CI using the normal (z) distribution. (You can use R or tables to get the score.)**
+
+START HERE
+
+**f. Calculate by hand the 95% CI using the t distribution. (You can use R or tables to get the score.)**
+
+
+
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 3
+
+**a. Explain why 2.e is incorrect.**
+
+It is incorrect because we don't know the real standard deviation of the population. Even more, although we don't know the real standard deviation of the population, if the sample size were bigger, 30 samples at least, the t-distribution would approximate the normal distribution and we could just use it almost safely. With a sample size equal 9, using the normal distribution is not accurate enough.
+
+**b. In a sentence or two each, explain what’s wrong with each of the wrong answers in Module 4.4, “Calculating percentiles and scores,” and suggest what error in thinking might have led someone to choose that answer. (http://www.nickbeauchamp.com/comp_stats_NB/compstats_04-04.html)**
+
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 4
+
+**a. Based on 2, calculate how many more individuals you would have to sample from your population to shink your 95% CI by 1/2 (ie, reduce the interval to half the size). Please show your work.**
+
+**b. Say you want to know the average income in the US. Previous studies have suggested that the standard deviation of your sample will be $20,000. How many people do you need to survey to get a 95% cofidence interval of ± $1,000? How many people do you need to survey to get a 95% CI of ± $100?**
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 5
+
+**a. Write a script to test the accuracy of the confidence interval calculation as in Module 4.3. But with a few differences: (1) Test the 99% CI, not the 95% CI. (2) Each sample should be only 20 individuals, which means you need to use the t distribution to calculate your 99% CI. (3) Run 1000 complete samples rather than 100. (4) Your population distribution must be something other than a bimodal normal distribution (as used in the lesson), although anything else is fine, including any of the other continuous distributions we’ve discussed so far.**
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+"0","paste0(""The number of 7s obtained in 100 simulated rolls of a 100-sided fair die is: "", rbinom(1, 100, 1/100))"
+"1","[1]"
+"1"," ""The number of 7s obtained in 100 simulated rolls of a 100-sided fair die is: 2"""
+"1","
+"

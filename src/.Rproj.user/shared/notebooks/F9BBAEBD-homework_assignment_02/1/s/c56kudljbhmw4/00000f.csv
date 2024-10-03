@@ -1,0 +1,16 @@
+"0","original_txt <- ""To be, or not to be -- that is the question:"
+"0","Whether 'tis nobler in the mind to suffer"
+"0","The slings and arrows of outrageous fortune,"
+"0","Or to take arms against a sea of troubles,"
+"0","And by opposing end them. To die -- to sleep --"
+"0","No more..."""
+"0",""
+"0","process_txt <- gsub(""to"", ""2"", original_txt, ignore.case = TRUE)"
+"0",""
+"0","cat(process_txt)"
+"1","2 be, or not 2 be -- that is the question:
+Whether 'tis nobler in the mind 2 suffer
+The slings and arrows of outrageous fortune,
+Or 2 take arms against a sea of troubles,
+And by opposing end them. 2 die -- 2 sleep --
+No more..."

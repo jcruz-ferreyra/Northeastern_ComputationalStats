@@ -1,0 +1,1 @@
+"0","hist(airquality$Ozone, main=""Ozone Histogram for Airquality dataset"", xlab=""Ozone"")"

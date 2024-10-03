@@ -1,0 +1,6 @@
+"0","prob_a_given_b = (0.95*0.001) / ((0.95*0.001)+(0.05*0.999))"
+"0","paste0(""The probability of actually being sick given that the test is positive is: "", round(prob_a_given_b, 3))"
+"1","[1]"
+"1"," ""The probability of actually being sick given that the test is positive is: 0.019"""
+"1","
+"

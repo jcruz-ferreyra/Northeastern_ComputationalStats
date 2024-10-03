@@ -1,0 +1,2 @@
+"0","authors_and_books <- merge(authors, books, by.x=""surname"", by.y=""name"", all.x=TRUE, all.y=TRUE)"
+"0","authors_and_books"

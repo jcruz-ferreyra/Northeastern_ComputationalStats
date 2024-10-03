@@ -1,0 +1,5 @@
+"0","paste0(""The probability of droppping the pencil 2 or more times in a day is: "", round(pnorm(60, 70, 10) - pnorm(50, 70, 10), 3))"
+"1","[1]"
+"1"," ""The probability of droppping the pencil 2 or more times in a day is: 0.136"""
+"1","
+"

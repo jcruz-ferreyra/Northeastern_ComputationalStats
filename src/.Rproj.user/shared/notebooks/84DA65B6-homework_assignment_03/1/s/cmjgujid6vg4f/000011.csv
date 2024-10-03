@@ -1,0 +1,5 @@
+"0","paste0(""The probability of scoring higher than 85 is: "", round(1 - pnorm(85, 70, 10), 3))"
+"1","[1]"
+"1"," ""The probability of scoring higher than 85 is: 0.067"""
+"1","
+"

@@ -1,0 +1,8 @@
+"0","paste0("
+"0","  ""The chance of getting a 45, or a value farther from the mean is: "","
+"0","  round(pnorm(45, 70, 10) * 2, 4)"
+"0","  )"
+"1","[1]"
+"1"," ""The chance of getting a 45, or a value farther from the mean is: 0.0124"""
+"1","
+"

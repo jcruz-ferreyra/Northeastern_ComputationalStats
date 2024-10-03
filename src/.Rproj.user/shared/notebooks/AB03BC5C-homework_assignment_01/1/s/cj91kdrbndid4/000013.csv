@@ -1,0 +1,2 @@
+"0","# Load df from recently created csv file"
+"0","read.table(file_path, header=TRUE, sep="","", stringsAsFactors=FALSE)"

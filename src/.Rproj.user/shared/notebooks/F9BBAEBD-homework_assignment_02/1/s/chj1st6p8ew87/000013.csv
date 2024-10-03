@@ -1,0 +1,1 @@
+"0","plot(airquality$Ozone, airquality$Wind, xlab=""Ozone"", ylab=""Wind"", main=""Wind vs Ozone in Airquality dataset"")"

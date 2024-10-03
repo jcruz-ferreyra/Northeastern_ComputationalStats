@@ -1,0 +1,7 @@
+"0","dates <- as.Date(c(rep(""2024-09-09"", 3), rep(""2024-09-16"", 3), rep(""2024-09-23"", 3)))"
+"0","fruits <- rep(c(""bananas"", ""apples"", ""pears""), 3)"
+"0","stock <- sample(15:30, 9, replace = TRUE)"
+"0",""
+"0","df <- data.frame(Date = dates, Fruit = fruits, Stock = stock)"
+"0",""
+"0","df"
