@@ -1,0 +1,235 @@
+---
+title: "Homework Assignment 04"
+author: "Juan Cruz Ferreyra"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    df_print: kable
+---
+
+```{r, echo=FALSE}
+library(knitr)
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo=TRUE)
+```
+
+&nbsp;
+
+&nbsp;
+
+## Section 1
+
+**You hypothesize that the average person is smarter than Sarah Palin. You know her IQ is 100. You give an IQ test to 100 randomly selected people, and get a mean of 104 and standard deviation of 22. Please show your work for each question.**
+
+**a. What is your null hypothesis?**
+
+We select our null hypothesis to be that the average person is not significantly different than Sarah Palin in terms of IQ level.
+
+$$H_a : \mu \neq 100,$$
+
+where $\mu$ is the average IQ score of the population.
+
+**b. What is your research hypothesis?**
+
+Our research hypothesis is that the average person is smarter than Sarah Palin.
+
+$$H_a : \mu > 100$$
+
+**c. What is your test statistic?**
+
+The test statistic can be calculated the following way:
+
+$$Test\ statistic = \frac{\bar{x} - \mu_0}{se}$$
+
+That is, how many standard errors the sample mean is from the null hypothesis. In our case, we take $\mu_0 = 100$, as it is the biggest mean contained in the null hypothesis (then it is the harder to beat with our research hypothesis).
+
+We calculate $se$ the following way:
+
+$$se = \frac{s}{\sqrt{n}} = \frac{22}{10} = 2.2$$
+
+$$Test\ statistic = \frac{104 - 100}{2.2} = \frac{20}{11}$$
+
+**d. Do you prefer a one-tailed or two-tailed test here, and why?**
+
+We can select either of both tests. The reason to select the one tailed seems reasonable since the research is trying the determine if we can reject the null hypothesis that the average person is not smarter than Sarah Palin. However, by selecting the two tailed test we are being more demanding by taking into account extreme results in both sides of the distribution. In other words, the "two-tailed" p--value tests whether the average person is better, worse or not significantly different than Sarah Palin. Although we have the research hypothesis that the average IQ score is higher than 100, we also would want to know if it ends to be significantly lower than it. Furthermore, supposing that the true IQ average of the population is exactly 100, then the probability of obtaining a score equal to the one-tailed threshold or rarer is two times the $\alpha$ selected for the test. For this reason we prefer to choose the two-tailed test.
+
+**e. What is your** $\alpha$ **and threshold (t statistic) value or values for your rejection region? (Whatever** $\alpha$ **you prefer is fine, just be sure to state it and explain why you chose it.)**
+
+We choose $\alpha = 0.05$ because it's commonly accepted as a standard in research, providing a good balance between Type I and Type II error risks. With a sample size of 100, we can refer to the standard normal distribution. Since we are using a two-tailed test, the rejection region is divided equally between the two tails, each containing $\alpha / 2 = 0.025$. To determine the critical values for the rejection region, we consult the standard normal distribution table to find the z-scores corresponding to the middle 95% of the data, leaving 2.5% in each tail. Specifically, we look for the z-score that marks the point below which 97.5% of the distribution falls in a normal distribution with $\sigma = 1$.
+
+```{r}
+cat(round(qnorm(.975), 2))
+```
+
+Then, we can set the rejection region to test statistics higher than 1.96 or lower than -1.96.
+
+
+**f. Can you reject the null under a one-tailed test?**
+
+For a one-tailed test we need to calculate the $z$ using just one tail containing $\alpha = 0.05$.
+
+```{r}
+cat(round(qnorm(.95), 2))
+```
+
+Then we compare the test statistics obtained in excercise c: $2/11$ to verify if it exceeds the critical value.
+
+```{r}
+cat(20/11 > qnorm(.95))
+```
+
+We can reject the null hypothesis under a one-tailed test.
+
+
+**g. Can you reject the null under a two-tailed test?**
+
+For a two-tailed test we use the $z$ value obtained in excercise e.
+
+```{r}
+cat(20/11 > qnorm(.975))
+```
+
+We can not reject the null hypothesis that the average IQ is not significantly different than Sarah Palin's IQ.
+
+**h. What is your 95% confidence interval?**
+
+We calculate the confidence interval the same way we did in our previous assignment.
+
+$$[\bar{x} - z\ se,\ \bar{x} + z\ se]\ ,$$
+
+where $z$ is the same we calculated in excercise e. Then:
+
+$$[104 - 1.96\ 2.2,\ 104 + 1.96\ 2.2]$$
+
+$$[99.69,\ 108.31]$$
+
+**i. What is the p-value for your test results?**
+
+We can calculate the p-value as the proportion of values in the distribution of the null hypothesis that are equal or more rare than the obtained mean sample (taking into account both tails). We can use the normal tables for that.
+
+```{r}
+cat(round(2 * pnorm(20/11, lower.tail = FALSE), 4))
+```
+
+We have a p-value of 0.069 for the two-tailed version of the test. Substantially higher than the 0.05 defined as threshold.
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 2
+
+**You hypothesize that men and women have different skill levels in playing Tetris. To test this, you have 50 men and 50 women play the game in a controlled setting. The mean score of the men is 1124 with a standard deviation of 200 and the mean score for the women is 1245, also with a standard deviation of 200.**
+
+**a. Are these scores statistically significantly different? Show your work.**
+
+```{r}
+
+```
+
+**b. Do you reject your hypothesis or the null? What do you conclude from this experiment?**
+
+```{r}
+
+```
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 3
+
+**You think drinking the night before an exam might help performance on the exam the next morning. To test this, you select 100 of your closest friends, and randomly get 50 of them drunk the night before the exam, which you denote the treatment group. The next day, the treatment group gets a mean of 78 with a standard deviation of 10 and the control group gets a 75 with a standard deviation of 5.**
+
+**a. Does the evidence show that drinking helped exam performance?**
+
+```{r}
+
+```
+
+***
+
+&nbsp;
+
+&nbsp;
+
+## Section 4
+
+**Using data of your choosing (or using simulated data), use R to conduct the following tests, and explain the results you get:**
+
+**a. A standard one-sample hypothesis test.**
+
+```{r}
+
+```
+
+**b. A difference-in-means test with independent samples.**
+
+```{r}
+
+```
+
+**c. A difference-in-means test with dependent samples (ie, a paired t-test).**
+
+```{r}
+
+```
+
+**Manually verify the results in (a) using the mean and sd as calculated by R (ie, you don’t have to manually calculate the mean or sd by hand!).**
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
